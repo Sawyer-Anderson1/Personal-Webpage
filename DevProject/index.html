@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sawyer Lynn Anderson's Personal Web Page</title>
+    <!-- <link rel=“stylesheet” type=“text/css” href="./style.css" >
+
+    my linking wasn't working!!!! -->
+</head>
+<style>
+    /* Menu bar, image, and title */
+    .Menu_buttons {
+        height: 42px;
+        overflow: hidden;
+        background-color: rgb(51, 50, 44);
+        position: -webkit-sticky;
+        position: sticky;
+        padding-left: 0;
+        top: 0;
+    }
+    .Menu_buttons .left {
+        margin: 0px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 0px;
+        list-style-type: none;
+        display: inline-block;
+        overflow: hidden;
+    }
+    .Menu_buttons .about {
+        margin: 0px;
+        list-style-type: none;
+        float: right;
+        overflow: hidden;
+    }
+    .Menu_buttons .left li {
+        display: inline;
+        display: block;
+        float: left;
+    }
+    .Menu_buttons .left li a {
+        text-decoration: none;
+        color: white;
+        padding: 12px;
+        border-style: none;
+    }
+    .Menu_buttons .left li a:hover {
+        background-color: olivedrab;
+        margin: 0;
+        /* color: rgb(255, 123, 123); */ 
+        color: rgb(0, 0, 0);
+    }
+    .Menu_buttons .about li a {
+        list-style-type: none;
+        background-color: olivedrab;
+        display: block;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        padding: 12px;
+        border-style: none;
+    }
+    .Menu_buttons .about li a:hover {
+        background-color: rgb(51, 50, 44);
+        margin: 0;
+        /* color: rgb(255, 123, 123); */ 
+        color: white
+    }
+    .Header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .Image {
+        max-width: 100%;
+        max-height: 100%;
+        width: 35%;
+        height: 35%;
+        float: left;
+        margin: 25px;
+        padding: 8px;
+        border-style: outset;
+        border-width: medium;
+        background-color: rgb(51, 50, 44);
+    }
+    .Title {
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* body */
+    body {
+        margin: 0;
+    }
+    .Body {
+        max-width: 1000px;
+        margin-inline: auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin: 25px;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    h2 {
+        font-size: large;
+    }
+    h3 {
+        font-size: medium;
+    }
+    p {
+        margin: 25px;
+    }
+    .p1 {
+        text-align: center;
+        font-size: large;
+    }
+    .h2 {
+        text-align: center;
+    }
+    .Bullet-point_lists {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .Interests {
+        float: left;
+        margin: 30px;
+    }
+    .Soft_skills {
+        float: right;
+        margin: 20px;
+    }
+
+</style>
+
+<body> 
+    <div class="Menu_buttons">
+        <ul class="left">
+            <li><a href="#Contact Information">Contact Information</a></li>
+            <li><a href="#About Me">About Me</a></li>    
+            <li><a href="#Projects and Experience">Projects and Experience</a></li>
+        </ul>
+        <ul class="about">
+            <li style="float:right"><a href="./resources/html/about.html">About</a></li> 
+        </ul>
+    </div>     
+
+    <div class="Body">
+        <div class="Header">
+            <img class="Image" src="./resources/my_Photo.jpg" alt="My Image"></img>
+            <div class="Title">  
+                <h1>I'm Sawyer Lynn Anderson: Welcome to my Webpage!</h1>
+            </div>  
+        </div>
+
+        <div id="Contact Information" class="Contact_information">
+            <p class="p1">Computer Science Sophmore at University of Texas at Dallas</p>
+            <h2>Contact Information: </h2>
+            <p>
+                School Email: Sawyer.Anderson@UTDallas.edu <br>
+                Phone Number: (214) 708-3100 <br>
+                LinkedIn: <a href="https://www.linkedin.com/in/sawyer-anderson-862613222" target="_blank">www.linkedin.com/in/sawyer-anderson-862613222</a> <br>
+                *perferred method contact is email*
+            </p>
+        </div>
+
+        <div id="About Me" class="About_me">
+            <h2 class="h2">About Me</h2>
+            <p class="Introduction_to_about_me">
+                I'm a Computer Science student at the University of Texas at Dallas, in Richardson.
+                I'm currently in my Sophmore year here at UTD, and have enjoyed my time here - as UTD has provided me with a profound number of opportunities and moments of discover.
+                If I had to name three traits that I believe best describe me, they would be: curious, kind, and eager.
+                If I then was told to name the one trait of the three that I believe is my strongest it would have to be my <em>curiousity</em>.
+            </p>
+
+            <p class="Curiosity">
+                To me <em>curiosity is the key</em> to knowledge, and self-discovery. My entire life I’ve been deeply curious and open-minded in nature.
+                My childhood, teenage years, and young adulthood have been a constant journey of personal exploration. 
+                Each new interest was a new phase, a wide variety of branching discoveries.
+                Without curiosity I wouldn't be who I am today, and certaintly not knowledge, technology, and society as a whole.
+                Curiosity is the guiding torch within all of mankind. This is what I believe is my defing trait.
+            </p>
+
+            <div class="Bullet-point_lists">
+                <div class="Interests">
+                    <h3>CS-related Interests/Hobbies:</h3>
+                    <ul>
+                        <li>Video Games/Game Development</li>
+                        <li>Web Development</li>
+                        <li>History</li>
+                        <li>Computer Vision</li>
+                        <li>Algorithmic Programming</li>
+                    </ul>
+                </div>
+
+                <div class="Soft_skills">
+                    <h3>Soft Skills:</h3>
+                    <ul>
+                        <li>Open-mindedness</li>
+                        <li>Enthusiatic work ethic</li>
+                        <li>Communication</li>
+                        <li>Caring</li>
+                        <li>And many more</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="Projects and Experience" class="Projects_and_experience">
+            <h2>Projects and Experience:</h2>
+        </div>
+    </div>
+</body>
+</html>

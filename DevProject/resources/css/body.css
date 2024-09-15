@@ -1,0 +1,22 @@
+/* body */
+body {
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 25px;
+}
+h1 {
+    font-size: 35px;
+}
+h2 {
+    font-size: large;
+}
+h3 {
+    font-size: medium;
+}
+p {
+    margin: 25px;
+}
+.p1 {
+    text-align: center;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+<style>
+    /* Menu bar, image, and title */
+    .Menu_buttons {
+        height: 42px;
+        overflow: hidden;
+        background-color: rgb(51, 50, 44);
+        position: -webkit-sticky;
+        position: sticky;
+        padding-left: 0;
+        top: 0;
+    }
+    .Menu_buttons ul {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 0px;
+        margin: 0px;
+        overflow: hidden;
+    }
+    .Menu_buttons li {
+        display: inline-block;
+        align-content: left;
+    }
+    .Menu_buttons .Home a {
+        list-style-type: none;
+        padding: 12px;
+        background-color: olivedrab;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        border-style: none;
+    }
+    .Menu_buttons .Home a:hover {
+        background-color: rgb(51, 50, 44);
+        margin: 0;
+        color: white
+    }
+    .Menu_buttons .ot a {
+        list-style-type: none;
+        text-decoration: none;
+        color: white;
+        padding: 12px;
+        border-style: none;
+    }
+    .Menu_buttons .ot a:hover {
+        background-color: olivedrab;
+        margin: 0;
+        color: rgb(0, 0, 0);
+    }
+
+    /* body */
+    body {
+        margin: 0;
+    }
+    .About {
+        max-width: 1000px;
+        margin-inline: auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin: 25px;
+    }
+    p {
+        margin: 25px;
+    }
+    h1 {
+        text-align: center;
+    }
+    h2 {
+        font-size: large;
+    }
+    h3 {
+        font-size: large;
+    }
+    .Current_features {
+        margin-left: 40px;
+    }
+    .Future_features {
+        margin-left: 40px;
+    }
+</style>
+
+<body> 
+    <div class="Menu_buttons">
+        <ul>
+            <li class="Home"><a href="C:\Users\sawye\DevProject\index.html">Home</a></li> 
+            <li class="ot"><a href="C:\Users\sawye\DevProject\index.html\#Contact Information">Contact Information</a></li>
+            <li class="ot"><a href="C:\Users\sawye\DevProject\index.html\#About Me">About Me</a></li>    
+            <li class="ot"><a href="C:\Users\sawye\DevProject\index.html\#Projects and Experience">Projects and Experience</a></li>
+        </ul>
+    </div>  
+    
+    <div class="About">
+        <h1>About this Webpage:</h1>
+        <h2>Why:</h2>
+            <p>
+                This is my first real project in HTML and CSS. I initially learned about HTML, CSS, and JavaScript
+                through CodeCademy, but had never really went beyond what was done within the courses of the site.
+                This project will, I believe, give me lots of exposure, practice, and experience in HTML, CSS, JavaScript, and (maybe) some PHP. 
+                This is the main reason I have made this site, without templates of any sort.
+                This website will continually be added upon and updated, i.e. it will never be "completed". 
+                Newly add features that will be implemented will be come more complex, and either for the purpose of practicality or artistic vision. 
+            </p>
+            <p>
+                In addition to these practical and artistic features, I will also create a part(s) of the site for the purpose of another, entirely
+                seperate project - that requires a webpage. I will document both the addition of features, and the ideas for furture ones on this page. 
+                The documentation of additions, if it changed an older part of the webpage in a significant way, will provided images and description of 
+                the old state of the site.         
+            </p>
+        <h3>What:</h3>
+            <p class="Current_features">
+                <strong>First features:</strong>
+                <ul class="Current_features">
+                    <li>The basic text and images (including this).</li>
+                    <li>Buttons at the top bar that link to different sections of the home page, and to this about section.</li>
+                    <li>Having the top bar stay when the user scrolls down.</li>
+                </ul>
+            </p>
+            <p class="Future_features">
+                <strong>Future features: </strong>
+                <ul class="Future_features">
+                    <li>Dropdown menus for the top bar buttons that already exist. The dropdown would be for the buttons that have subsections.</li>
+                    <li>Search box, maybe using datalist</li>
+                    <li>Users being able to rate and give feedback, with both stars and comments</li>
+                    <li>Implement different rendering methods: SSR, SPA, and SSG</li>
+                    <li>Implement Database (needed for an effective storing of the feedback,etc.)</li>
+                    <li>etc...</li>
+                </ul>
+            </p>
+    </div>
+</body>
+</html>
