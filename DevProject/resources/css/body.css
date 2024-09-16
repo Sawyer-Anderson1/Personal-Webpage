@@ -1,22 +1,76 @@
+/* Menu bar, image, and title */
+.Menu_buttons {
+    height: 42px;
+    overflow: hidden;
+    background-color: rgb(51, 50, 44);
+    position: -webkit-sticky;
+    position: sticky;
+    padding-left: 0;
+    top: 0;
+}
+.Menu_buttons ul {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.Menu_buttons li {
+    display: inline-block;
+    align-content: left;
+}
+.Menu_buttons .Home a {
+    list-style-type: none;
+    padding: 12px;
+    background-color: olivedrab;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-style: none;
+}
+.Menu_buttons .Home a:hover {
+    background-color: rgb(51, 50, 44);
+    margin: 0;
+    color: white
+}
+.Menu_buttons .ot a {
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    border-style: none;
+}
+.Menu_buttons .ot a:hover {
+    background-color: olivedrab;
+    margin: 0;
+    color: rgb(0, 0, 0);
+}
+
 /* body */
 body {
     margin: 0;
 }
+.About {
+    max-width: 1000px;
+    margin-inline: auto;
+}
 h1, h2, h3, h4, h5, h6 {
     margin: 25px;
 }
+p {
+    margin: 25px;
+}
 h1 {
-    font-size: 35px;
+    text-align: center;
 }
 h2 {
     font-size: large;
 }
 h3 {
-    font-size: medium;
+    font-size: large;
 }
-p {
-    margin: 25px;
+.Current_features {
+    margin-left: 40px;
 }
-.p1 {
-    text-align: center;
+.Future_features {
+    margin-left: 40px;
 }
