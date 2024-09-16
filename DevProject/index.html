@@ -4,55 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sawyer Lynn Anderson's Personal Web Page</title>
-    <!-- <link rel=“stylesheet” type=“text/css” href="./style.css" >
-
-    my linking wasn't working!!!! -->
+    <link rel="stylesheet" type="text/css" href="./resources/css/index.css" >
 </head>
 <style>
     /* Menu bar, image, and title */
     .Menu_buttons {
-        height: 42px;
-        overflow: hidden;
-        background-color: rgb(51, 50, 44);
         position: -webkit-sticky;
         position: sticky;
-        padding-left: 0;
+        background-color: rgb(51, 50, 44);
+        margin: 0px;
+        padding: 0px;
+        height: 42px;
+        list-style-type: none;
+        overflow: hidden;
         top: 0;
     }
-    .Menu_buttons .left {
-        margin: 0px;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        padding-left: 0px;
-        list-style-type: none;
-        display: inline-block;
-        overflow: hidden;
-    }
-    .Menu_buttons .about {
+    .about {
         margin: 0px;
         list-style-type: none;
         float: right;
         overflow: hidden;
     }
-    .Menu_buttons .left li {
-        display: inline;
-        display: block;
+    .left, .dropdown {
         float: left;
     }
-    .Menu_buttons .left li a {
+    .left a, .dropdown a, .dropbtn {
         text-decoration: none;
         color: white;
         padding: 12px;
         border-style: none;
+        overflow: hidden;
+        display: block;
     }
-    .Menu_buttons .left li a:hover {
+    li.dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgb(51, 50, 44);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown-content a {
+        color: white;
+        padding: 12px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover {
         background-color: olivedrab;
-        margin: 0;
-        /* color: rgb(255, 123, 123); */ 
+        color: black;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .left a:hover {
+        background-color: olivedrab;
         color: rgb(0, 0, 0);
     }
-    .Menu_buttons .about li a {
-        list-style-type: none;
+    .dropdown a:hover {
+        background-color: olivedrab;
+        color: rgb(0, 0, 0);
+    }
+    .about a {
         background-color: olivedrab;
         display: block;
         text-decoration: none;
@@ -60,7 +77,7 @@
         padding: 12px;
         border-style: none;
     }
-    .Menu_buttons .about li a:hover {
+    .about a:hover {
         background-color: rgb(51, 50, 44);
         margin: 0;
         /* color: rgb(255, 123, 123); */ 
@@ -134,17 +151,19 @@
 
 </style>
 
-<body> 
-    <div class="Menu_buttons">
-        <ul class="left">
-            <li><a href="#Contact Information">Contact Information</a></li>
-            <li><a href="#About Me">About Me</a></li>    
-            <li><a href="#Projects and Experience">Projects and Experience</a></li>
-        </ul>
-        <ul class="about">
-            <li style="float:right"><a href="./resources/html/about.html">About</a></li> 
-        </ul>
-    </div>     
+<body>
+    <ul class="Menu_buttons">
+        <li class="left"><a href="#Contact Information">Contact Information</a></li>
+        <li class="dropdown">
+            <a class="dropbtn" href="#About Me">About Me</a>
+            <div class="dropdown-content">
+                <a href="#Interests">Interests/Hobbies</a>
+                <a href="#Soft_skills">Soft Skills</a>
+            </div>
+        </li>
+        <li class="left"><a href="#Projects and Experience">Projects and Experience</a></li>
+        <li class="about" style="float:right"><a href="./resources/html/about.html">About</a></li> 
+    </ul>
 
     <div class="Body">
         <div class="Header">
@@ -183,8 +202,8 @@
             </p>
 
             <div class="Bullet-point_lists">
-                <div class="Interests">
-                    <h3>CS-related Interests/Hobbies:</h3>
+                <div id="Interests">
+                    <h3>Interests/Hobbies:</h3>
                     <ul>
                         <li>Video Games/Game Development</li>
                         <li>Web Development</li>
@@ -194,7 +213,7 @@
                     </ul>
                 </div>
 
-                <div class="Soft_skills">
+                <div id="Soft_skills">
                     <h3>Soft Skills:</h3>
                     <ul>
                         <li>Open-mindedness</li>
