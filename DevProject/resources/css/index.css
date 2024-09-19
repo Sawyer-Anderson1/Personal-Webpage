@@ -1,20 +1,23 @@
 /* Menu bar, image, and title */
-.Menu_buttons {
+.Topbar {
     position: -webkit-sticky;
     position: sticky;
     background-color: rgb(51, 50, 44);
     margin: 0px;
     padding: 0px;
     height: 42px;
-    list-style-type: none;
-    overflow: hidden;
     top: 0;
+}
+.Menu_buttons {
+    background-color: rgb(51, 50, 44);
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
 }
 .about {
     margin: 0px;
     list-style-type: none;
     float: right;
-    overflow: hidden;
 }
 .left, .dropdown {
     float: left;
@@ -24,12 +27,11 @@
     color: white;
     padding: 12px;
     border-style: none;
-    overflow: hidden;
-    display: block;
+    display: inline-block;
 }
 li.dropdown {
-    position: relative;
     display: inline-block;
+    position: relative;
 }
 .dropdown-content {
     display: none;
@@ -44,6 +46,7 @@ li.dropdown {
     padding: 12px;
     text-decoration: none;
     display: block;
+    text-align: left;
 }
 .dropdown-content a:hover {
     background-color: olivedrab;
@@ -53,10 +56,6 @@ li.dropdown {
     display: block;
 }
 .left a:hover {
-    background-color: olivedrab;
-    color: rgb(0, 0, 0);
-}
-.dropdown a:hover {
     background-color: olivedrab;
     color: rgb(0, 0, 0);
 }
