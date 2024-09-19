@@ -6,164 +6,21 @@
     <title>Sawyer Lynn Anderson's Personal Web Page</title>
     <link rel="stylesheet" type="text/css" href="./resources/css/index.css" >
 </head>
-<style>
-    /* Menu bar, image, and title */
-    .Menu_buttons {
-        position: -webkit-sticky;
-        position: sticky;
-        background-color: rgb(51, 50, 44);
-        margin: 0px;
-        padding: 0px;
-        height: 42px;
-        list-style-type: none;
-        overflow: hidden;
-        top: 0;
-    }
-    .about {
-        margin: 0px;
-        list-style-type: none;
-        float: right;
-        overflow: hidden;
-    }
-    .left, .dropdown {
-        float: left;
-    }
-    .left a, .dropdown a, .dropbtn {
-        text-decoration: none;
-        color: white;
-        padding: 12px;
-        border-style: none;
-        overflow: hidden;
-        display: block;
-    }
-    li.dropdown {
-        position: relative;
-        display: inline-block;
-    }
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: rgb(51, 50, 44);
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-    .dropdown-content a {
-        color: white;
-        padding: 12px;
-        text-decoration: none;
-        display: block;
-    }
-    .dropdown-content a:hover {
-        background-color: olivedrab;
-        color: black;
-    }
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    .left a:hover {
-        background-color: olivedrab;
-        color: rgb(0, 0, 0);
-    }
-    .dropdown a:hover {
-        background-color: olivedrab;
-        color: rgb(0, 0, 0);
-    }
-    .about a {
-        background-color: olivedrab;
-        display: block;
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        padding: 12px;
-        border-style: none;
-    }
-    .about a:hover {
-        background-color: rgb(51, 50, 44);
-        margin: 0;
-        /* color: rgb(255, 123, 123); */ 
-        color: white
-    }
-    .Header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .Image {
-        max-width: 100%;
-        max-height: 100%;
-        width: 35%;
-        height: 35%;
-        float: left;
-        margin: 25px;
-        padding: 8px;
-        border-style: outset;
-        border-width: medium;
-        background-color: rgb(51, 50, 44);
-    }
-    .Title {
-        padding: 10px;
-        text-align: center;
-    }
-
-    /* body */
-    body {
-        margin: 0;
-    }
-    .Body {
-        max-width: 1000px;
-        margin-inline: auto;
-    }
-    h1, h2, h3, h4, h5, h6 {
-        margin: 25px;
-    }
-    h1 {
-        font-size: 35px;
-    }
-    h2 {
-        font-size: large;
-    }
-    h3 {
-        font-size: medium;
-    }
-    p {
-        margin: 25px;
-    }
-    .p1 {
-        text-align: center;
-        font-size: large;
-    }
-    .h2 {
-        text-align: center;
-    }
-    .Bullet-point_lists {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .Interests {
-        float: left;
-        margin: 30px;
-    }
-    .Soft_skills {
-        float: right;
-        margin: 20px;
-    }
-
-</style>
-
 <body>
-    <ul class="Menu_buttons">
-        <li class="left"><a href="#Contact Information">Contact Information</a></li>
-        <li class="dropdown">
-            <a class="dropbtn" href="#About Me">About Me</a>
-            <div class="dropdown-content">
-                <a href="#Interests">Interests/Hobbies</a>
-                <a href="#Soft_skills">Soft Skills</a>
-            </div>
-        </li>
-        <li class="left"><a href="#Projects and Experience">Projects and Experience</a></li>
-        <li class="about" style="float:right"><a href="./resources/html/about.html">About</a></li> 
-    </ul>
+    <div class="Topbar">
+        <ul class="Menu_buttons">
+            <li class="left"><a href="#Contact Information">Contact Information</a></li>
+            <li class="dropdown">
+                <a class="dropbtn" href="#About Me">About Me</a>
+                <div class="dropdown-content">
+                    <a href="#Interests">Interests/Hobbies</a>
+                    <a href="#Soft_skills">Soft Skills</a>
+                </div>
+            </li>
+            <li class="left"><a href="#Projects and Experience">Projects and Experience</a></li>
+            <li class="about" style="float:right"><a href="./resources/html/about.html">About</a></li> 
+        </ul>
+    </div>
 
     <div class="Body">
         <div class="Header">
