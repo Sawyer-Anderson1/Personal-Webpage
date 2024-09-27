@@ -14,6 +14,10 @@
     padding: 0px;
     list-style-type: none;
 }
+.Search-Form {
+    float: right;
+    margin: 10px;
+}
 .about {
     margin: 0px;
     list-style-type: none;
