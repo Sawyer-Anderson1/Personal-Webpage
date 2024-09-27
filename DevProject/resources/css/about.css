@@ -17,6 +17,10 @@
 .Menu_buttons li {
     float: left;
 }
+.Search-Form {
+    float: right;
+    margin: 10px;
+}
 .ot a, .dropdown a, .dropbtn {
     text-decoration: none;
     color: white;
