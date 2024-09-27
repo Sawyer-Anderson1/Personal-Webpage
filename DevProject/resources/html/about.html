@@ -26,6 +26,10 @@
     .Menu_buttons li {
         float: left;
     }
+    .Search-Form {
+    float: right;
+    margin: 10px;
+    }
     .ot a, .dropdown a, .dropbtn {
         text-decoration: none;
         color: white;
@@ -123,6 +127,15 @@
                 </div>
             </li>    
             <li class="ot"><a href="C:\Users\sawye\DevProject\index.html#Projects and Experience">Projects and Experience</a></li>
+            <form class="Search-Form" id="Search Form" action="" method=""></form>
+                <input class="Search-Form" id="enter" type="search" list="options" name="query" />
+                <datalist class="Search-Form" id="options">
+                    <option class="option" value="Contact Information">
+                    <option class="option" value="About Me">
+                    <option class="option" value="Projects and Experience">
+                    <option class="option" value="About">
+                </datalist>
+            </form>
         </ul>
     </div>  
     
@@ -145,6 +158,7 @@
             </p>
         <h3>What:</h3>
             <line><em>***</em> indicates a completed/implemented feature!</line>
+            <line><em>*</em> indicates a feature in progress!</line>
             <p class="Current_features">
                 <strong>First features:</strong>
                 <ul class="Current_features">
@@ -159,16 +173,17 @@
                 <strong class="Current_features">Features added by week of September 22nd, 2024:</strong>
                 <ul class="Current_features">
                     <li>Linking to specific sections of a different page.</li>
+                    <li>Added simple/boilerplate search bar</li>
                 </ul>
             </p>
             <p class="Future_features">
                 <strong>Future features: </strong>
                 <ul class="Future_features">
                     <li><em>***</em>Dropdown menus for the top bar buttons that already exist. The dropdown would be for the buttons that have subsections.<em>***</em></li>
-                    <li>Search box, maybe using datalist</li>
+                    <li><em>*</em>Search box, maybe using datalist<em>*</em></li>
                     <li>Users being able to rate and give feedback, with both stars and comments</li>
                     <li>Implement different rendering methods: SSR, SPA, and SSG</li>
-                    <li>Implement Database (needed for an effective storing of the feedback,etc.): SQL</li>
+                    <li>Implement Database (needed for an effective storing of the feedback, search bar, etc.): SQL</li>
                     <li>Implement React (but only after using regular CSS, HTML, JavaScript, PHP)</li>
                     <li>etc...</li>
                 </ul>
