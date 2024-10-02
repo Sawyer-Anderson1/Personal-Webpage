@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sawyer Lynn Anderson's Personal Web Page</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/index.css" >
+    <script src="./resources/js/searchBar.js"></script>
+</head>
+<body>
+    <div class="Topbar">
+        <ul class="Menu_buttons">
+            <li class="left"><a href="#Contact Information">Contact Information</a></li>
+            <li class="dropdown">
+                <a class="dropbtn" href="#About Me">About Me</a>
+                <div class="dropdown-content">
+                    <a href="#Interests">Interests/Hobbies</a>
+                    <a href="#Soft_skills">Soft Skills</a>
+                </div>
+            </li>
+            <li class="left"><a href="#Projects and Experience">Projects and Experience</a></li>
+            <li class="about" style="float:right"><a href="./resources/html/about.html">About</a></li> 
+            <form class="Search_Form" id="search-form" action="{% url 'search' %}" method='POST'></form>
+                <input class="Search_Form" id="enter" type="search" list="options" name="query" />
+                <datalist class="Search_Form" id="options">
+                    <option class="option" value="Contact Information">
+                    <option class="option" value="About Me">
+                    <option class="option" value="Projects and Experience">
+                    <option class="option" value="About">
+                </datalist>
+                <button class="Search_Form" id="go" type="submit"><strong>&#x1F50E;&#xFE0E;</strong></button>
+                <button class="Search_Form" id="reset" type="reset"><strong>X</strong></button>
+            </form>
+        </ul>
+    </div>
+
+    <div class="Body">
+        <div class="Header">
+            <img class="Image" src="./resources/my_Photo.jpg" alt="My Image"></img>
+            <div class="Title">  
+                <h1>I'm Sawyer Lynn Anderson: Welcome to my Webpage!</h1>
+            </div>  
+        </div>
+
+        <div id="Contact Information" class="Contact_information">
+            <p class="p1">Computer Science Sophmore at University of Texas at Dallas</p>
+            <h2>Contact Information: </h2>
+            <p>
+                School Email: Sawyer.Anderson@UTDallas.edu <br>
+                Phone Number: (214) 708-3100 <br>
+                LinkedIn: <a href="https://www.linkedin.com/in/sawyer-anderson-862613222" target="_blank">www.linkedin.com/in/sawyer-anderson-862613222</a> <br>
+                *perferred method contact is email*
+            </p>
+        </div>
+
+        <div id="About Me" class="About_me">
+            <h2 class="h2">About Me</h2>
+            <p class="Introduction_to_about_me">
+                I'm a Computer Science student at the University of Texas at Dallas, in Richardson.
+                I'm currently in my Sophmore year here at UTD, and have enjoyed my time here - as UTD has provided me with a profound number of opportunities and moments of discover.
+                If I had to name three traits that I believe best describe me, they would be: curious, kind, and eager.
+                If I then was told to name the one trait of the three that I believe is my strongest it would have to be my <em>curiousity</em>.
+            </p>
+
+            <p class="Curiosity">
+                To me <em>curiosity is the key</em> to knowledge, and self-discovery. My entire life I’ve been deeply curious and open-minded in nature.
+                My childhood, teenage years, and young adulthood have been a constant journey of personal exploration. 
+                Each new interest was a new phase, a wide variety of branching discoveries.
+                Without curiosity I wouldn't be who I am today, and certaintly not knowledge, technology, and society as a whole.
+                Curiosity is the guiding torch within all of mankind. This is what I believe is my defing trait.
+            </p>
+
+            <div class="Bullet-point_lists">
+                <div id="Interests">
+                    <h3>Interests/Hobbies:</h3>
+                    <ul>
+                        <li>Video Games/Game Development</li>
+                        <li>Web Development</li>
+                        <li>History</li>
+                        <li>Computer Vision</li>
+                        <li>Algorithmic Programming</li>
+                    </ul>
+                </div>
+
+                <div id="Soft_skills">
+                    <h3>Soft Skills:</h3>
+                    <ul>
+                        <li>Open-mindedness</li>
+                        <li>Enthusiatic work ethic</li>
+                        <li>Communication</li>
+                        <li>Caring</li>
+                        <li>And many more</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="Projects and Experience" class="Projects_and_experience">
+            <h2>Projects and Experience:</h2>
+        </div>
+    </div>
+</body>
+</html>
