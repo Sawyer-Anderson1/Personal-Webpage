@@ -1,0 +1,149 @@
+/* Import existing menu styles */
+@import url('index.css');
+
+/* Override and extend menu styles for login page */
+.Menu_buttons {
+    background-color: rgb(51, 50, 44);
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.Menu_buttons li {
+    margin: 0;
+    padding: 0;
+}
+
+.Menu_buttons li a {
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.Menu_buttons li a:hover {
+    background-color: olivedrab;
+    color: black;
+}
+
+.Menu_buttons .dropdown {
+    position: relative;
+}
+
+.Menu_buttons .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(51, 50, 44);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.Menu_buttons .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.Menu_buttons .dropdown-content a {
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.Menu_buttons .dropdown-content a:hover {
+    background-color: olivedrab;
+    color: black;
+}
+
+/* Login container styles */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.login-form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-container h2 {
+    text-align: center;
+    color: rgb(51, 50, 44);
+    margin-bottom: 30px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    color: rgb(51, 50, 44);
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: olivedrab;
+    box-shadow: 0 0 0 2px rgba(107, 142, 35, 0.2);
+}
+
+.submit-button {
+    background-color: olivedrab;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #556b2f;
+}
+
+.switch-form-button {
+    background: none;
+    border: none;
+    color: olivedrab;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+    text-decoration: underline;
+}
+
+.switch-form-button:hover {
+    color: #556b2f;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+} 

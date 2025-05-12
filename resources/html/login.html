@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sawyer Lynn Anderson</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/jsx">
+        const domNode = document.getElementById('app');
+        const root = ReactDOM.createRoot(domNode);
+
+        function LoginPage() {
+            return (
+                <>
+                    <div className="Topbar">
+                        <Topbar />
+                    </div>
+                    <div className="login-container">
+                        <LoginForm />
+                    </div>
+                </>
+            );
+        }
+
+        function Topbar() {
+            return (
+                <nav>
+                    <ul className="Menu_buttons">
+                        <li className="Home"><a href="../../index.html">Home</a></li>
+                        <li className="ot"><a href="../../index.html#Contact Information">Contact Information</a></li>
+                        <li className="dropdown">
+                            <a className="dropbtn" href="../../index.html#About Me">About Me</a>
+                            <div className="dropdown-content">
+                                <a href="../../index.html#Interests">Interests/Hobbies</a>
+                                <a href="../../index.html#Soft_skills">Soft Skills</a>
+                            </div>
+                        </li>    
+                        <li className="ot"><a href="../../index.html#Projects and Experience">Projects and Experience</a></li>
+                        <li className="ot"><a href="../../index.html#Ratings">Ratings & Reviews</a></li>
+                    </ul>
+                </nav>
+            );
+        }
+
+        function LoginForm() {
+            const [isLogin, setIsLogin] = React.useState(true);
+            const [formData, setFormData] = React.useState({
+                email: '',
+                password: '',
+                full_name: ''
+            });
+            const [error, setError] = React.useState('');
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setError('');
+
+                try {
+                    const endpoint = isLogin ? '/users/token' : '/users/register';
+                    console.log('Attempting to connect to:', `http://localhost:8000${endpoint}`);
+                    
+                    const response = await fetch(`http://localhost:8000${endpoint}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: formData.email,
+                            password: formData.password,
+                            ...(isLogin ? {} : { full_name: formData.full_name })
+                        })
+                    });
+
+                    console.log('Response status:', response.status);
+                    const data = await response.json();
+                    console.log('Response data:', data);
+
+                    if (response.ok) {
+                        if (isLogin) {
+                            // Store the token
+                            localStorage.setItem('token', data.access_token);
+                            // Redirect to home page
+                            window.location.href = '../../index.html';
+                        } else {
+                            // Switch to login after successful registration
+                            setIsLogin(true);
+                            setError('Registration successful! Please login.');
+                        }
+                    } else {
+                        console.error('Error response:', data);
+                        setError(data.detail || 'An error occurred during login/registration');
+                    }
+                } catch (err) {
+                    console.error('Error details:', err);
+                    setError('Unable to connect to the server. Please check if the server is running.');
+                }
+            };
+
+            const handleChange = (e) => {
+                setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                });
+            };
+
+            return (
+                <div className="login-form-container">
+                    <h2>{isLogin ? 'Login' : 'Register'}</h2>
+                    {error && <div className="error-message">{error}</div>}
+                    <form onSubmit={handleSubmit} className="login-form">
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        {!isLogin && (
+                            <div className="form-group">
+                                <label htmlFor="full_name">Full Name:</label>
+                                <input
+                                    type="text"
+                                    id="full_name"
+                                    name="full_name"
+                                    value={formData.full_name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        )}
+                        <div className="form-group">
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="submit-button">
+                            {isLogin ? 'Login' : 'Register'}
+                        </button>
+                    </form>
+                    <button 
+                        className="switch-form-button"
+                        onClick={() => setIsLogin(!isLogin)}
+                    >
+                        {isLogin ? 'Need an account? Register' : 'Already have an account? Login'}
+                    </button>
+                </div>
+            );
+        }
+
+        root.render(<LoginPage />);
+    </script>
+</body>
+</html> 

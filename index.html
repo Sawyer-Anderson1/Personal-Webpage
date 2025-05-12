@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sawyer Lynn Anderson's Personal Web Page</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/index.css" >
+    <script src="./resources/js/searchBar.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Add Font Awesome for star icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/jsx">
+        const domNode = document.getElementById('app');
+        const root = ReactDOM.createRoot(domNode);
+
+        function HomePage() {
+            return (
+                <>
+                    <div className="Topbar">
+                        <Topbar />
+                    </div>
+                    <div className="Body">
+                        <Body />
+                    </div>
+                </>
+            );
+        }
+
+        function Topbar() {
+            const [isLoggedIn, setIsLoggedIn] = React.useState(!!localStorage.getItem('token'));
+
+            const handleLogout = () => {
+                localStorage.removeItem('token');
+                setIsLoggedIn(false);
+                window.location.reload();
+            };
+
+            return (
+                <ul className="Menu_buttons">
+                    <li className="left"><a href="#Contact Information">Contact Information</a></li>
+                    <li className="dropdown">
+                        <a className="dropbtn" href="#About Me">About Me</a>
+                        <div className="dropdown-content">
+                            <a href="#Interests">Interests/Hobbies</a>
+                            <a href="#Soft_skills">Soft Skills</a>
+                        </div>
+                    </li>
+                    <li className="left"><a href="#Projects and Experience">Projects and Experience</a></li>
+                    <li className="left"><a href="#Ratings">Ratings & Reviews</a></li>
+                    <li className="about" style={{ float: "right" }}>
+                        {isLoggedIn ? (
+                            <button onClick={handleLogout} className="logout-button">Logout</button>
+                        ) : (
+                            <a href="./resources/html/login.html">Login</a>
+                        )}
+                    </li>
+                    <form className="Search_Form" id="search-form" action="/search" method="POST">
+                        <input className="Search_Form" id="enter" type="search" list="options" name="query" />
+                        <datalist className="Search_Form" id="options">
+                            <option className="option" value="Contact Information" />
+                            <option className="option" value="About Me" />
+                            <option className="option" value="Projects and Experience" />
+                            <option className="option" value="Ratings & Reviews" />
+                            <option className="option" value="About" />
+                        </datalist>
+                        <button className="Search_Form" id="go" type="submit"><strong>&#x1F50E;&#xFE0E;</strong></button>
+                        <button className="Search_Form" id="reset" type="reset"><strong>X</strong></button>
+                    </form>
+                </ul>
+            );
+        }
+
+        function Body() {
+            const [rating, setRating] = React.useState(0);
+            const [hoverRating, setHoverRating] = React.useState(0);
+            const [comment, setComment] = React.useState('');
+            const [reviews, setReviews] = React.useState([]);
+            const [error, setError] = React.useState('');
+            const [success, setSuccess] = React.useState('');
+
+            // Fetch reviews on component mount
+            React.useEffect(() => {
+                fetchReviews();
+            }, []);
+
+            const fetchReviews = async () => {
+                try {
+                    const response = await fetch('http://localhost:8000/ratings/');
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch reviews');
+                    }
+                    const data = await response.json();
+                    setReviews(data);
+                } catch (error) {
+                    console.error('Error fetching reviews:', error);
+                    setError('Failed to load reviews. Please try again later.');
+                }
+            };
+
+            const handleSubmitReview = async () => {
+                setError('');
+                setSuccess('');
+                
+                if (!localStorage.getItem('token')) {
+                    setError('Please login to submit a review');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('http://localhost:8000/ratings/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        },
+                        body: JSON.stringify({
+                            rating: rating,
+                            comment: comment
+                        })
+                    });
+
+                    if (response.ok) {
+                        // Clear form
+                        setRating(0);
+                        setComment('');
+                        setSuccess('Review submitted successfully!');
+                        // Refresh reviews
+                        fetchReviews();
+                    } else {
+                        const data = await response.json();
+                        setError(data.detail || 'Failed to submit review');
+                    }
+                } catch (error) {
+                    console.error('Error submitting review:', error);
+                    setError('Failed to submit review. Please try again later.');
+                }
+            };
+
+            return (
+                <>
+                    <div className="Header">
+                        <img className="Image" src="./resources/my_Photo.jpg" alt="Sawyer Lynn Anderson" />
+                        <div className="Title">
+                            <h1>I'm Sawyer Lynn Anderson: Welcome to my Webpage!</h1>
+                        </div>
+                    </div>
+
+                    <div id="Contact Information" className="Contact_information">
+                        <p className="p1">Computer Science Sophomore at University of Texas at Dallas</p>
+                        <h2>Contact Information:</h2>
+                        <p>
+                            School Email: Sawyer.Anderson@UTDallas.edu <br />
+                            Phone Number: (214) 708-3100 <br />
+                            LinkedIn: <a href="https://www.linkedin.com/in/sawyer-anderson-862613222" target="_blank">www.linkedin.com/in/sawyer-anderson-862613222</a> <br />
+                            *Preferred method of contact is email*
+                        </p>
+                    </div>
+
+                    <div id="About Me" className="About_me">
+                        <h2 className="h2">About Me</h2>
+                        <p className="Introduction_to_about_me">
+                            I'm a Computer Science student at the University of Texas at Dallas, in Richardson.
+                            I'm currently in my Sophomore year here at UTD and have enjoyed my time here - as UTD has provided me with a profound number of opportunities and moments of discovery.
+                            If I had to name three traits that I believe best describe me, they would be: curious, kind, and eager.
+                            If I then was told to name the one trait of the three that I believe is my strongest, it would have to be my <em>curiosity</em>.
+                        </p>
+                        <p className="Curiosity">
+                            To me, <em>curiosity is the key</em> to knowledge and self-discovery. My entire life I've been deeply curious and open-minded in nature.
+                            My childhood, teenage years, and young adulthood have been a constant journey of personal exploration.
+                            Each new interest was a new phase, a wide variety of branching discoveries.
+                            Without curiosity, I wouldn't be who I am today, and certainly not knowledge, technology, and society as a whole.
+                            Curiosity is the guiding torch within all of mankind. This is what I believe is my defining trait.
+                        </p>
+
+                        <div className="Bullet-point_lists">
+                            <div id="Interests">
+                                <h3>Interests/Hobbies:</h3>
+                                <ul>
+                                    <li>Video Games/Game Development</li>
+                                    <li>Web Development</li>
+                                    <li>History</li>
+                                    <li>Computer Vision</li>
+                                    <li>Algorithmic Programming</li>
+                                </ul>
+                            </div>
+
+                            <div id="Soft_skills">
+                                <h3>Soft Skills:</h3>
+                                <ul>
+                                    <li>Open-mindedness</li>
+                                    <li>Enthusiastic work ethic</li>
+                                    <li>Communication</li>
+                                    <li>Caring</li>
+                                    <li>And many more</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Projects and Experience" className="Projects_and_experience">
+                        <h2>Projects and Experience:</h2>
+                        <ul>
+                            <li>C++ Trading Software using cURL, JsonCpp, API information</li>
+                            <li>Java Weather PircBot (chat bot)</li>
+                            <li>Personal Webpage</li>
+                            <li>Math-match game in MIPS assembly language</li>
+                        </ul>
+                    </div>
+
+                    <div id="Ratings" className="Ratings_section">
+                        <h2>Ratings & Reviews</h2>
+                        {error && <div className="error-message">{error}</div>}
+                        {success && <div className="success-message">{success}</div>}
+                        <div className="rating-form">
+                            <h3>Leave a Review</h3>
+                            <div className="star-rating">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <i
+                                        key={star}
+                                        className={`fas fa-star ${star <= (hoverRating || rating) ? 'active' : ''}`}
+                                        onClick={() => setRating(star)}
+                                        onMouseEnter={() => setHoverRating(star)}
+                                        onMouseLeave={() => setHoverRating(0)}
+                                    />
+                                ))}
+                            </div>
+                            <textarea
+                                className="comment-box"
+                                placeholder="Write your review here..."
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                            />
+                            <button 
+                                className="submit-review"
+                                onClick={handleSubmitReview}
+                                disabled={!rating}
+                            >
+                                Submit Review
+                            </button>
+                        </div>
+                        <div className="reviews-list">
+                            <h3>Recent Reviews</h3>
+                            {reviews.length === 0 ? (
+                                <p>No reviews yet. Be the first to leave a review!</p>
+                            ) : (
+                                reviews.map((review) => (
+                                    <div key={review.id} className="review-item">
+                                        <div className="review-header">
+                                            <div className="review-stars">
+                                                {[1, 2, 3, 4, 5].map((star) => (
+                                                    <i
+                                                        key={star}
+                                                        className={`fas fa-star ${star <= review.rating ? 'active' : ''}`}
+                                                    />
+                                                ))}
+                                            </div>
+                                            <span className="review-date">
+                                                {new Date(review.created_at).toLocaleDateString()}
+                                            </span>
+                                        </div>
+                                        <p className="review-comment">{review.comment}</p>
+                                        <p className="review-author">- {review.user.full_name}</p>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    </div>
+                </>
+            );
+        }
+
+        root.render(<HomePage />);
+    </script>
+</body>
+</html>
