@@ -61,11 +61,16 @@
                 e.preventDefault();
                 setError('');
 
+                // Define backend URL based on environment
+                const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                    ? 'http://localhost:8000'
+                    : 'https://sawyeranderson-backend.onrender.com';
+
                 try {
                     const endpoint = isLogin ? '/users/token' : '/users/register';
-                    console.log('Attempting to connect to:', `http://localhost:8000${endpoint}`);
+                    console.log('Attempting to connect to:', `${BACKEND_URL}${endpoint}`);
                     
-                    const response = await fetch(`http://localhost:8000${endpoint}`, {
+                    const response = await fetch(`${BACKEND_URL}${endpoint}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
