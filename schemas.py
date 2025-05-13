@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 
 class UserBase(BaseModel):
@@ -27,7 +27,7 @@ class TokenData(BaseModel):
     email: Optional[str] = None
 
 class RatingBase(BaseModel):
-    rating: int
+    rating: float
     comment: Optional[str] = None
 
 class RatingCreate(RatingBase):

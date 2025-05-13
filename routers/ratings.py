@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Response
 from sqlalchemy.orm import Session
 from typing import List
 from database import get_db
@@ -11,6 +11,10 @@ router = APIRouter(
     prefix="/ratings",
     tags=["ratings"]
 )
+
+@router.options("/")
+async def options_ratings():
+    return Response(status_code=200)
 
 async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(
@@ -45,9 +49,9 @@ def create_rating(
     db.add(db_rating)
     db.commit()
     db.refresh(db_rating)
-    return db_rating
+    return RatingResponse.from_orm(db_rating)
 
 @router.get("/", response_model=List[RatingResponse])
 def get_ratings(db: Session = Depends(get_db)):
     ratings = db.query(Rating).all()
-    return ratings 
+    return [RatingResponse.from_orm(rating) for rating in ratings] 
