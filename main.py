@@ -24,7 +24,8 @@ origins = [
     "https://sawyeranderson.github.io",  # Add your GitHub Pages domain
     "https://*.github.io",  # Allow all GitHub Pages subdomains
     "https://sawyeranderson.net",
-    "https://www.sawyeranderson.net"
+    "https://www.sawyeranderson.net",
+    "https://sawyeranderson-backend.onrender.com"
 ]
 
 app.add_middleware(
