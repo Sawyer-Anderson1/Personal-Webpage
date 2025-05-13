@@ -83,6 +83,11 @@
             const [error, setError] = React.useState('');
             const [success, setSuccess] = React.useState('');
 
+            // Define backend URL based on environment
+            const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                ? 'http://localhost:8000'
+                : 'https://sawyeranderson.net';  // Your GitHub Pages domain
+
             // Fetch reviews on component mount
             React.useEffect(() => {
                 fetchReviews();
@@ -90,7 +95,14 @@
 
             const fetchReviews = async () => {
                 try {
-                    const response = await fetch('http://localhost:8000/ratings/');
+                    const response = await fetch(`${BACKEND_URL}/ratings/`, {
+                        method: 'GET',
+                        credentials: 'include',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    });
                     if (!response.ok) {
                         throw new Error('Failed to fetch reviews');
                     }
@@ -112,10 +124,12 @@
                 }
 
                 try {
-                    const response = await fetch('http://localhost:8000/ratings/', {
+                    const response = await fetch(`${BACKEND_URL}/ratings/`, {
                         method: 'POST',
+                        credentials: 'include',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Accept': 'application/json',
                             'Authorization': `Bearer ${localStorage.getItem('token')}`
                         },
                         body: JSON.stringify({
