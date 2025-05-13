@@ -4,8 +4,17 @@ from typing import List
 from database import get_db
 from models import Rating, User
 from schemas import RatingCreate, RatingResponse, TokenData
-from .auth import oauth2_scheme, SECRET_KEY, ALGORITHM
+from .auth import oauth2_scheme
 from jose import jwt, JWTError
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Get security configuration from environment
+SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-here")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
 
 router = APIRouter(
     prefix="/ratings",

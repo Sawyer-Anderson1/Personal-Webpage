@@ -9,10 +9,15 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import User
 from schemas import Token, TokenData, UserCreate, LoginSchema
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Security configuration
-SECRET_KEY = "your-secret-key-here"  # In production, use environment variable
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-here")  # Use environment variable
+ALGORITHM = os.getenv("ALGORITHM", "HS256")  # Use environment variable
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
