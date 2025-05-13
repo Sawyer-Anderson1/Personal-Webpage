@@ -65,4 +65,7 @@ def create_rating(rating: RatingCreate, current_user: User = Depends(get_current
 @router.get("/", response_model=List[RatingResponse])
 def get_ratings(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     ratings = db.query(Rating).offset(skip).limit(limit).all()
-    return [RatingResponse.from_orm(rating) for rating in ratings] 
+    print("Raw ratings from database:", [(r.id, r.rating, r.comment) for r in ratings])  # Debug log
+    response = [RatingResponse.from_orm(rating) for rating in ratings]
+    print("Processed ratings response:", [(r.id, r.rating, r.comment) for r in response])  # Debug log
+    return response 

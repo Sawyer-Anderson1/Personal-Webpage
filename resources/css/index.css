@@ -228,6 +228,16 @@ p {
 }
 
 .review-stars {
+    color: #ddd;
+}
+
+.review-stars i {
+    font-size: 24px;
+    margin-right: 5px;
+    transition: color 0.2s;
+}
+
+.review-stars i.active {
     color: #ffd700;
 }
 
