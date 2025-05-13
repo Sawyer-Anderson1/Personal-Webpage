@@ -17,7 +17,7 @@ class UserResponse(UserBase):
     id: int
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class Token(BaseModel):
     access_token: str
@@ -39,4 +39,4 @@ class RatingResponse(RatingBase):
     user: UserResponse
 
     class Config:
-        from_attributes = True 
+        orm_mode = True 

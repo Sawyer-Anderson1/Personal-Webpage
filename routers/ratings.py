@@ -51,15 +51,11 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
     return user
 
 @router.post("/", response_model=RatingResponse)
-def create_rating(
-    rating: RatingCreate,
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
-):
+def create_rating(rating: RatingCreate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     db_rating = Rating(
+        user_id=current_user.id,
         rating=rating.rating,
-        comment=rating.comment,
-        user_id=current_user.id
+        comment=rating.comment
     )
     db.add(db_rating)
     db.commit()
@@ -67,6 +63,6 @@ def create_rating(
     return RatingResponse.from_orm(db_rating)
 
 @router.get("/", response_model=List[RatingResponse])
-def get_ratings(db: Session = Depends(get_db)):
-    ratings = db.query(Rating).all()
+def get_ratings(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    ratings = db.query(Rating).offset(skip).limit(limit).all()
     return [RatingResponse.from_orm(rating) for rating in ratings] 
